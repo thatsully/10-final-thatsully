@@ -3,7 +3,16 @@ body {
     text-align: center;
 }
   
-#fact-container {
+.main{
+    display: inline-flex;
+}
+
+.facts{
+    display: block;
+    margin: 30px;
+}
+
+.fact-container {
     margin-top: 20px;
     font-size: 18px;
 }
