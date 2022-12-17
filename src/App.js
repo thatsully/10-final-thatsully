@@ -16,10 +16,14 @@ class App extends Component {
         var savedFacts = localStorage.getItem('savedFacts');
         if (savedFacts) {
             this.setState({ savedFacts: JSON.parse(savedFacts) });
+            console.log(savedFacts);
+            console.log(this.state.savedFacts);
+        
         }
       }
 
     componentDidUpdate(prevProps, prevState) {
+        // Save the updated savedFacts in local storage
         if (prevState.savedFacts !== this.state.savedFacts) {
           localStorage.setItem('savedFacts', JSON.stringify(this.state.savedFacts));
         }
@@ -37,32 +41,31 @@ class App extends Component {
     };
 
     deleteB = event =>{
-        var isSaved = event.target.saved;
-        /*console.log(event.target.saved);*/
-        var index = event.target.id;
-        if (isSaved) {
-            console.log("check1");
-            var updatedSavedFacts = [...this.state.savedFacts];
+        
+        console.log(event.target.id);
+        const index = event.target.id;
+        if (this.state.savedFacts[index]) {
+            const updatedSavedFacts = [...this.state.savedFacts];
             updatedSavedFacts.splice(index, 1);
             this.setState({ savedFacts: updatedSavedFacts });
         } else {
-            console.log("check2");
-            var updatedFacts = [...this.state.facts];
+            const updatedFacts = [...this.state.facts];
             updatedFacts.splice(index, 1);
             this.setState({ facts: updatedFacts });
         }
-      };
+        console.log(this.state.facts, this.state.savedFacts)
+    };
 
     saveFact = event => {
-
-        var index = event.target.id;
-        var updatedFacts = [...this.state.facts];
-        var savedFact = updatedFacts[index];
+        console.log(event.target.id);
+        const index = event.target.id;
+        const updatedFacts = [...this.state.facts];
+        const savedFact = updatedFacts[index];
         updatedFacts.splice(index, 1);
         this.setState({ facts: updatedFacts });
         this.setState({ savedFacts: [...this.state.savedFacts, savedFact] });
         localStorage.setItem('savedFacts', JSON.stringify(this.state.savedFacts));
-        
+        console.log(this.state.savedFacts)
     };
 
     render() {
@@ -80,8 +83,8 @@ class App extends Component {
                     </div>
                     <div className="new-facts">
                         {this.state.facts && this.state.facts.map((fact, index) => 
-                        /*<NewFact key={index} id={index} text={fact} deleteB={this.deleteB} saveFact={this.saveFact}  saved={false} />
-                    )}*/
+                        <NewFact key={index} id={index} text={fact} deleteB={this.deleteB} saveFact={this.saveFact}  saved={false} />
+                    )}
                     </div>
                 </div>
             </div>

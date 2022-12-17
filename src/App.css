@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #efefef;
+}
+
+.generate-fact-button{
+  margin: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.button-area {
+  margin: 20px 0;
+}
+
+.facts{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.fact-container{
+  background-color: white;
+  padding: 5px;
+  margin-top: 20px;
+  font-size: 18px;
+  border: 0.5px solid gray;
+  margin: 5px;
+  width: 250px;
+}
+
+p {
+  font-size: 16px;
+  color: #333;
+}
+
+button {
+  font-size: 16px;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  padding: 10px 20px;
+}
+
+.generate-fact-button:hover,
+.deleteB:hover,
+.saveB:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+
+.deleteB{
+  align-self: center;
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteB:focus{
+  background-color: red;
+}
